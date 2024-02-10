@@ -1,0 +1,32 @@
+ <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="assets/img/logo.svg" width="47" alt="Silicon">
+            <%= link_to root_path, class: "navbar-brand pe-3" do %>
+            RailsBridge
+            <% end %>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
+                  <ul class="dropdown-menu">
+                  <% if logged_in? %>
+                  <% else %>
+                  <%= link_to "ログイン", new_user_session_path, class:"dropdown-item" %>
+                  <%= link_to "会員登録", new_user_path, class:"dropdown-item" %>
+                  <%end%>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </header>
