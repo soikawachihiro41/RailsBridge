@@ -1,16 +1,8 @@
-<!-- Page content -->
-<section class="position-relative h-100 pt-5 pb-4">
-
-<!-- Sign in form -->
 <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
     <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
     <h1 class="text-center text-xl-start">Welcome Back</h1>
     <p class="text-center text-xl-start pb-3 mb-3">Don’t have an account yet? <a href="account-signup.html">Register here.</a></p>
-    <%= form_with model: @user, local: true, html: {class:"needs-validation"} do |f| %>
-        <div class="position-relative mb-4">
-            <%= f.label :username, class: "form-label fs-base" %>
-            <%= f.text_field :username, class: "form-control form-control-lg" %>
-        </div>
+    <%= form_with url: user_sessions_path, local: true, html: {class:"needs-validation"} do |f| %>
         <div class="position-relative mb-4">
             <%= f.label :email, class: "form-label fs-base" %>
             <%= f.email_field :email, class: "form-control form-control-lg" %>
@@ -19,22 +11,12 @@
             <%= f.label :password, class: "form-label fs-base" %>
             <%= f.password_field :password, class: "form-control form-control-lg" %>
         </div>
-        <div class="position-relative mb-4">
-            <%= f.label :password_confirmation, class: "form-label fs-base" %>
-            <%= f.password_field :password_confirmation, class: "form-control form-control-lg" %>
-        </div>
         <div class="mb-4">
         <%= f.submit "会員登録", class:"btn btn-primary shadow-primary btn-lg w-100"%>
     <%end%>
     <div class="w-100 align-self-end">
     <p class="nav d-block fs-xs text-center text-xl-start pb-2 mb-0">
         &copy; All rights reserved. Made by
-        <a class="nav-link d-inline-block p-0" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a>
     </p>
     </div>
 </div>
-
-<!-- Background -->
-<div class="position-absolute top-0 end-0 w-50 h-100 bg-position-center bg-repeat-0 bg-size-cover d-none d-xl-block" style="background-image: url(assets/img/account/signin-bg.jpg);"></div>
-</section>
-</main>
