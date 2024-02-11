@@ -5,4 +5,5 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :password, presence: true
     validates :password, confirmation: true
+    has_many :posts
 end
