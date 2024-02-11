@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
-  #before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
-  #before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
   end
 
   def show
+    @post = Post.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to posts_path, alert: "指定されたポストが見つかりません。"
   end
+  
 
   def new
     @post = Post.new
@@ -23,7 +27,9 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
+  
 
   def update
     if @post.update(post_params)
@@ -39,9 +45,11 @@ class PostsController < ApplicationController
   end
 
   private
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to posts_url, alert: "指定されたポストが見つかりません。"
+  end
 
     def post_params
       params.require(:post).permit(:title, :body, :url)
