@@ -17,9 +17,8 @@
                 <div class="card-body">
                   <div class="fs-sm text-muted mb-1"><%= post.created_at.strftime('%b %d, %Y') %></div>
                   <h2 class="h4 pb-1 mb-2">
-                    <a href="#"><%= post.title %></a>
+                    <%= link_to post.title, post_path(post) %>
                   </h2>
-
                   <div class="d-flex">
                     <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-outline-primary px-3 px-lg-4 me-3' %>
                     <!-- Additional buttons like Deactivate or Delete can go here -->
