@@ -1,24 +1,35 @@
-<h1>投稿一覧</h1>
+<!-- Page content -->
+<section class="container pt-5">
+  <div class="row">
 
-<%= link_to '新規投稿', new_post_path %>
+    <!-- Account collections -->
+    <div class="col-md-8 offset-lg-1 pb-5 mb-lg-2 pt-md-5 mt-n3 mt-md-0">
+      <div class="ps-md-3 ps-lg-0 mt-md-2 pt-md-4 pb-md-2">
+        <div class="d-sm-flex align-items-center justify-content-between pt-xl-1 mb-3 pb-3">
+          <h1 class="h2 mb-sm-0">みんなの開発アプリ</h1>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>操作</th>
-    </tr>
-  </thead>
+        <% @posts.each do |post| %>
+          <!-- Item -->
+          <div class="card border-0 shadow-sm overflow-hidden mb-4">
+            <div class="row g-0">
+              <div class="col-sm-8">
+                <div class="card-body">
+                  <div class="fs-sm text-muted mb-1"><%= post.created_at.strftime('%b %d, %Y') %></div>
+                  <h2 class="h4 pb-1 mb-2">
+                    <a href="#"><%= post.title %></a>
+                  </h2>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.title, post %></td>
-        <td>
-          <%= link_to '編集', edit_post_path(post) %> |
-          <%= link_to '削除', post, method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                  <div class="d-flex">
+                    <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-outline-primary px-3 px-lg-4 me-3' %>
+                    <!-- Additional buttons like Deactivate or Delete can go here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
