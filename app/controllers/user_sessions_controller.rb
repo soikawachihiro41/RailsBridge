@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-    #skip_before_action :require_login, only: %i[create new]
+    skip_before_action :require_login, only: %i[create new]
 
     def new
     end
@@ -18,5 +18,5 @@ class UserSessionsController < ApplicationController
     def destroy
       logout
       redirect_to(login_path, notice: 'ログアウトしました')
-    end
+    end    
 end
