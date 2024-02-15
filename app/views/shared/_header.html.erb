@@ -13,14 +13,19 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- 追加したPostsリンク -->
           <li class="nav-item">
+            <%= link_to "New Post", new_post_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Posts", posts_path, class: "nav-link" %>
           </li>
           <!-- Account Dropdown -->
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              Account
+            </a>
             <ul class="dropdown-menu">
               <% if logged_in? %>
-                <!-- ログイン時のメニュー項目 -->
+                  <%= button_to 'ログアウト', logout_path, method: :delete, class: "dropdown-item" %>
               <% else %>
                 <%= link_to "ログイン", new_user_session_path, class: "dropdown-item" %>
                 <%= link_to "会員登録", new_user_path, class: "dropdown-item" %>
