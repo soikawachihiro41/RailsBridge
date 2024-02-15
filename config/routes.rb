@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   delete 'logout', to: 'user_sessions#destroy', as: :logout
   get 'logout', to: 'user_sessions#destroy'
-  get 'login', to: 'user_sessions#new', as: :login
-
   get "up" => "rails/health#show", as: :rails_health_check
-  resources :posts
+  resources :posts do
     resources :comments, only: [:create, :destroy]
+  end
 end
