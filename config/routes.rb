@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy', as: :logout
   get 'logout', to: 'user_sessions#destroy'
   get "up" => "rails/health#show", as: :rails_health_check
+  get 'login', to: 'user_sessions#new', as: :login
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
